@@ -1,6 +1,6 @@
 /********************************************************************************* 
 
-WEB322 – Assignment 03
+WEB322 – Assignment 04
 
 I declare that this assignment is my own work in accordance with Seneca
 Academic Policy. No part of this assignment has been copied manually or 
@@ -12,7 +12,7 @@ the course.
 Name:   akash yadav
 Student ID:   172566218
 Date:  16-06-2023
-Cyclic Web App URL:  https://zany-slug-slacks.cyclic.app/
+Cyclic Web App URL:  https://good-pumps-toad.cyclic.app/shop
 GitHub Repository URL:  https://github.com/akash4142/web322-app
 
 ********************************************************************************/
