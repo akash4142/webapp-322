@@ -101,18 +101,36 @@ module.exports.getItemsByCategory = function (category) {
   });
 };
 
-module.exports.getPublishedItemsByCategory = function(category) {
-  return new Promise((resolve, reject) => {
-    const filteredItems = items.filter(item => item.published && item.category === category);
+// module.exports.getPublishedItemsByCategory = function(category) {
+//   return new Promise((resolve, reject) => {
+//     const filteredItems = items.filter(item => item.published && item.category === category);
+    
+//     console.log(filteredItems);
+//     if (filteredItems.length === 0) {
+//       reject('No results returned');
+//     }
 
-    if (filteredItems.length === 0) {
-      reject('No results returned');
-    }
-
-    resolve(filteredItems);
-  });
-};
-
+//     resolve(filteredItems);
+//   });
+// };
+module.exports.getPublishedItemsByCategory = (category)=>{
+  return new Promise((resolve,reject)=>{
+      let pubItems = [];
+      for (let i=0;i<items.length;i++)
+      {
+          if(items[i].published==true && items[i].category == category)
+          {
+              pubItems.push(items[i]);
+          }
+      }
+      if(pubItems.length==0)
+      {
+          reject("no matching items");
+      }else{
+          resolve(pubItems);
+      }
+  })
+}
 
 module.exports.getItemsByMinDate = function (minDateStr) {
   return new Promise((resolve, reject) => {
