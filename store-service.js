@@ -89,6 +89,19 @@ module.exports.addItem = function (itemData) {
 };
 
 
+module.exports.getItemsByCategory = function (category) {
+  return new Promise((resolve, reject) => {
+    const filteredItems = items.filter((item) => item.category === category);
+
+    if (filteredItems.length === 0) {
+      reject('No results returned');
+    }
+
+    resolve(filteredItems);
+  });
+};
+
+
 module.exports.getPublishedItemsByCategory = (category)=>{
   return new Promise((resolve,reject)=>{
       let pubItems = [];
@@ -107,19 +120,6 @@ module.exports.getPublishedItemsByCategory = (category)=>{
       }
   })
 }
-
-module.exports.getPublishedItemsByCategory = function(category) {
-  return new Promise((resolve, reject) => {
-    const filteredItems = items.filter(item => item.published && item.category === category);
-
-    if (filteredItems.length === 0) {
-      reject('No results returned');
-    }
-
-    resolve(filteredItems);
-  });
-};
-
 
 module.exports.getItemsByMinDate = function (minDateStr) {
   return new Promise((resolve, reject) => {
