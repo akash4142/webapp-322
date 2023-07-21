@@ -165,15 +165,18 @@ module.exports.getItemsByCategory = function (category) {
   });
 };
 
-module.exports.getPublishedItemsByCategory = function (category) {
+module.exports.getPublishedItemsByCategory = function(category) {
   return new Promise((resolve, reject) => {
-    Item.findAll({
-      where: { category: category, published: true }
-    })
-      .then(items => resolve(items))
-      .catch(err => reject('No matching items'));
+    const filteredItems = items.filter(item => item.published && item.category === category);
+
+    if (filteredItems.length === 0) {
+      reject('No results returned');
+    }
+
+    resolve(filteredItems);
   });
 };
+
 
 module.exports.getItemsByMinDate = function (minDateStr) {
   return new Promise((resolve, reject) => {
