@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <h2>Items</h2>
+    <h2>Items <a href="/items/add" class="btn btn-success pull-right">Add Item</a></h2>
     <hr />
     {{#unless items}}
       <p>No items found.</p>
@@ -14,6 +14,7 @@
             <th>Price</th>
             <th>Category</th>
             <th>Published</th>
+            <th></th> <!-- New column for "Remove" links -->
           </tr>
         </thead>
         <tbody>
@@ -21,10 +22,15 @@
             <tr>
               <td>{{this.id}}</td>
               <td>{{this.title}}</td>
-              <td>{{this.postDate}}</td>
+              <td>{{#formatDate this.postDate}}{{/formatDate}}</td>
               <td>$ {{this.price}}</td>
               <td><a href="/items?category={{this.categoryId}}">{{this.category}}</a></td>
               <td>{{this.published}}</td>
+              <td>
+                <form action="/items/delete/{{this.id}}" method="GET">
+                  <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+              </td>
             </tr>
           {{/each}}
         </tbody>
@@ -36,4 +42,3 @@
 <div class="col-md-12 text-center">
   <strong>{{message}}</strong>
 </div>
-
