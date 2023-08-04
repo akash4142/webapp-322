@@ -1,44 +1,47 @@
+
 <div class="row">
   <div class="col-md-12">
-    <h2>Items <a href="/items/add" class="btn btn-success pull-right">Add Item</a></h2>
+    <h2>Items
+      <a href="/Items/add" class="btn btn-success pull-right">Add Item</a>
+    </h2>
     <hr />
-    {{#unless items}}
-      <p>No items found.</p>
-    {{else}}
-      <table class="table table-responsive">
+    <div class="table-responsive">
+      <table class="table">
         <thead>
-          <tr>
-            <th>Item ID</th>
-            <th>Title</th>
-            <th>Post Date</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Published</th>
-            <th></th> <!-- New column for "Remove" links -->
-          </tr>
+          <td>Item ID</td>
+          <td>Title</td>
+          <td>Post Date</td>
+          <td>Price</td>
+          <td>Category</td>
+          <td>Published</td>
         </thead>
         <tbody>
           {{#each items}}
             <tr>
+
               <td>{{this.id}}</td>
               <td>{{this.title}}</td>
-              <td>{{#formatDate this.postDate}}{{/formatDate}}</td>
-              <td>$ {{this.price}}</td>
-              <td><a href="/items?category={{this.categoryId}}">{{this.category}}</a></td>
+              <td>{{formatDate this.postDate}}</td>
+              <td>{{this.price}}</td>
+              <td><a
+                  href="/items?category={{this.category}}"
+                >{{this.category}}</a></td>
               <td>{{this.published}}</td>
               <td>
-                <form action="/items/delete/{{this.id}}" method="GET">
-                  <button type="submit" class="btn btn-danger">Remove</button>
-                </form>
+                <a
+                  href="/Items/delete/{{this.id}}"
+                  class="btn btn-danger"
+                >Remove</a>
               </td>
             </tr>
           {{/each}}
         </tbody>
       </table>
-    {{/unless}}
+    </div>
   </div>
-</div>
-
-<div class="col-md-12 text-center">
-  <strong>{{message}}</strong>
+  {{#unless items}}
+    <div class="col-md-12 text-center">
+      <strong>{{message}}</strong>
+    </div>
+  {{/unless}}
 </div>
