@@ -87,7 +87,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   clientSessions({
     cookieName: "session",
-    secret: "HaolinYang112654223",
+    secret: "akashyadav172566218",
     duration: 10 * 60 * 1000,
     activeDuration: 10 * 60 * 1000,
   })
