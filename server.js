@@ -108,7 +108,7 @@ function ensureLogin(req, res, next) {
 
 // Redirect to /about
 app.get("/", (req, res) => {
-  res.redirect("/shop");
+  res.redirect("views/shop");
 });
 
 // The about page
